@@ -86,7 +86,7 @@ function install() {
             mkdir -p $OUTPUT_DIR/letsencrypt
             docker pull certbot/certbot
             docker run --rm --name certbot -p 80:80 -v $OUTPUT_DIR/letsencrypt:/etc/letsencrypt/ certbot/certbot \
-                certonly --standalone --noninteractive  --agree-tos --preferred-challenges http \
+                certonly --dry-run --standalone --noninteractive  --agree-tos --preferred-challenges http \
                 --email $EMAIL -d $DOMAIN --logs-dir /etc/letsencrypt/logs
         fi
     fi
